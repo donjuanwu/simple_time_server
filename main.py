@@ -16,6 +16,41 @@ Resources:
 3. Python's time.time()
 - https://docs.python.org/3/library/time.html#time.time
 
+4. Push an existing local project to Github
+- https://docs.github.com/en/get-started/importing-your-projects-to-github/importing-source-code-to-github/adding-locally-hosted-code-to-github
+
+5. Deploy to Heroku (from Terminal)
+    1. Heroku login # proceed to login to Heroku use Duo 2FA
+    2. Heroku create
+    3. git checkout -b dev # if haven't already create a dev branch
+    4. Create Procfile # either use git or add a new file using pycharm
+        web: python main.py
+    5. Git add, commit and push
+    git add .
+    git commit -m "Complete assignment 5 and push to Heroku"
+
 
 
 """
+
+import os
+import time
+from flask import Flask
+
+app = Flask(__name__)
+
+
+@app.route('/')
+def get_epoch_time():
+    """
+    convert human-readable time to epoch
+    :return:
+    """
+
+    time_epoch = int(time.time()) # get epoch time
+    return str(time_epoch)
+
+
+if __name__ == "__main__":
+    port = int(os.environ.get("PORT", 6739))
+    app.run('0.0.0.0', port=port)
