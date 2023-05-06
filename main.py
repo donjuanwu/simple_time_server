@@ -28,6 +28,12 @@ Resources:
     5. Git add, commit and push
     git add .
     git commit -m "Complete assignment 5 and push to Heroku"
+    6. Push to heroku
+    git push heroku dev:main
+    7. Open microservice in heroku
+    heroku open
+
+
 
 
 
